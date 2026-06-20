@@ -38,9 +38,11 @@ class Capture:
     scripts catch this so the code path is still runnable without a capture card.
     """
 
-    def __init__(self, device_index: Any = 0, width: int = 1920, height: int = 1080):
+    def __init__(self, device_index: Any = 0, width: int = 1920, height: int = 1080,
+                 start_sec: float = 0.0):
         self.device_index = device_index
         self.is_file = _is_file_source(device_index)
+        self._start_frame = 0
 
         if self.is_file:
             if not os.path.exists(device_index):
@@ -54,7 +56,14 @@ class Capture:
             fps = self.cap.get(cv2.CAP_PROP_FPS)
             # Fall back to 30fps if the container doesn't report a sane FPS.
             self.src_fps = fps if fps and fps > 0 else 30.0
-            self._frame_interval = 1.0 / self.src_fps
+            # Target seconds-per-frame. Pacing is done by the (async) caller via
+            # asyncio.sleep so background inference tasks aren't starved; the
+            # generator itself never blocks. 0.0 for live devices (no pacing).
+            self.frame_interval = 1.0 / self.src_fps
+            # Skip an intro (menus/character-select) and loop back to it, not 0.
+            if start_sec > 0:
+                self._start_frame = int(start_sec * self.src_fps)
+                self.cap.set(cv2.CAP_PROP_POS_FRAMES, self._start_frame)
         else:
             idx = int(device_index)
             self.cap = cv2.VideoCapture(idx, cv2.CAP_AVFOUNDATION)
@@ -67,7 +76,7 @@ class Capture:
             # Smallest possible buffer so .read() always returns the most recent
             # frame rather than a queued stale one when processing falls behind.
             self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-            self._frame_interval = 0.0
+            self.frame_interval = 0.0
             if not self.cap.isOpened():
                 raise RuntimeError(
                     f"Capture device {device_index} not opened "
@@ -89,23 +98,17 @@ class Capture:
             yield Frame(img=img, t=time.monotonic())
 
     def _file_frames(self) -> Iterator[Frame]:
-        # Pace yields to the file's native FPS. ``target`` is the wall-clock time
-        # the next frame should be emitted; if downstream processing is slower
-        # than real-time we simply fall behind (never speed up past native FPS).
-        target = time.monotonic()
+        # Yield frames as fast as requested; the async caller paces playback to
+        # ``frame_interval`` with asyncio.sleep (which also lets background
+        # inference tasks run). Loops back to the start on EOF.
         while True:
             ok, img = self.cap.read()
             if not ok:
-                # EOF → loop back to the first frame for a continuous demo.
-                self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                # EOF → loop back to the start frame (past any skipped intro).
+                self.cap.set(cv2.CAP_PROP_POS_FRAMES, self._start_frame)
                 ok, img = self.cap.read()
                 if not ok:
                     return  # genuinely unreadable; stop cleanly
-                target = time.monotonic()
-            now = time.monotonic()
-            if target > now:
-                time.sleep(target - now)
-            target = max(now, target) + self._frame_interval
             yield Frame(img=img, t=time.monotonic())
 
     def close(self) -> None:

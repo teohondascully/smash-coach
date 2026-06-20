@@ -69,17 +69,44 @@ def test_loops_past_eof(tmp_path):
         cap.close()
 
 
-def test_paces_to_native_fps(tmp_path):
-    # At 20fps, emitting 5 frames should take ~0.2s (>= 4 intervals of 50ms).
+def test_exposes_frame_interval(tmp_path):
+    # Pacing moved to the async caller; Capture just exposes the target interval.
     clip = str(tmp_path / "clip.mp4")
     _write_clip(clip, n_frames=10, fps=20.0)
 
     cap = Capture(device_index=clip)
     try:
+        assert cap.frame_interval == pytest.approx(1.0 / 20.0, abs=0.01)
+    finally:
+        cap.close()
+
+
+def test_start_sec_seeks_past_intro(tmp_path):
+    # With start_sec set, the first frame should be the seeked frame, and the
+    # loop point should be that frame (not 0).
+    clip = str(tmp_path / "clip.mp4")
+    _write_clip(clip, n_frames=20, fps=10.0)  # 2s clip
+
+    cap = Capture(device_index=clip, start_sec=1.0)  # skip to frame ~10
+    try:
+        assert cap._start_frame == 10
+        frames = list(itertools.islice(cap.frames(), 3))
+        assert len(frames) == 3
+    finally:
+        cap.close()
+
+
+def test_generator_does_not_block(tmp_path):
+    # The file generator must yield without sleeping (caller does the pacing),
+    # so pulling several frames is near-instant even for a low-FPS clip.
+    clip = str(tmp_path / "clip.mp4")
+    _write_clip(clip, n_frames=10, fps=5.0)  # 200ms/frame if it (wrongly) paced
+
+    cap = Capture(device_index=clip)
+    try:
         t0 = time.monotonic()
-        list(itertools.islice(cap.frames(), 5))
+        list(itertools.islice(cap.frames(), 8))
         elapsed = time.monotonic() - t0
-        # 4 inter-frame gaps * 50ms = 200ms; allow generous lower bound.
-        assert elapsed >= 0.15
+        assert elapsed < 0.2  # would be ~1.4s if it still slept per frame
     finally:
         cap.close()

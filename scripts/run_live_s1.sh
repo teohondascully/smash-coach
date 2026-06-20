@@ -23,6 +23,8 @@ S1_PORT="${S1_PORT:-8001}"
 S2_PORT="${S2_PORT:-8002}"
 OPS_PORT="${OPS_PORT:-9000}"
 CAP_DEV="${CAP_DEV:-data/gameplay.mov}"
+# gameplay.mov opens on ~10s of noise + character-select; skip to the match.
+CAP_SKIP_SECS="${CAP_SKIP_SECS:-11}"
 
 # Gate on the actual S1 health endpoint through the tunnel — a listening socket
 # alone can be a stale/half-dead tunnel, so we test end-to-end reachability.
@@ -61,6 +63,7 @@ fi
 
 # --- launch the live HUD ----------------------------------------------------
 export CAP_DEV
+export CAP_SKIP_SECS
 export S1_URL="http://localhost:${S1_PORT}/infer"
 export S2_URL="http://localhost:${S2_PORT}/counterfactual"
 export S1_HZ="${S1_HZ:-7.0}"
@@ -70,7 +73,7 @@ export P2_CHAR="${P2_CHAR:-ike}"
 export RECORD_PATH="${RECORD_PATH:-}"
 
 echo "=== smash coach — live HUD on real S1 ==="
-echo "  CAP_DEV = $CAP_DEV"
+echo "  CAP_DEV = $CAP_DEV   (skip ${CAP_SKIP_SECS}s intro)"
 echo "  S1_URL  = $S1_URL"
 echo "  S1_HZ   = $S1_HZ   DEBUG = $DEBUG   P1/P2 = $P1_CHAR/$P2_CHAR"
 echo "  (press 'q' in the smash-coach window to quit)"

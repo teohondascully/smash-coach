@@ -3,6 +3,7 @@
 Env vars:
   CAP_DEV         capture device index (default 0) OR path to a video file
                   (e.g. /path/gameplay.mov) to run off a recorded clip
+  CAP_SKIP_SECS   seconds of intro to skip in a video-file source (default 0)
   S1_URL          System 1 endpoint   (default http://localhost:8001/infer)
   S2_URL          System 2 endpoint   (default http://localhost:8002/counterfactual)
   S1_HZ           System 1 poll rate  (default 7.0)
@@ -101,6 +102,9 @@ async def run() -> None:
     # (e.g. /path/gameplay.mov) for running the pipeline off a recorded clip.
     cap_dev_raw = os.getenv("CAP_DEV", "0")
     cap_dev: int | str = int(cap_dev_raw) if cap_dev_raw.isdigit() else cap_dev_raw
+    # Skip an intro (menus / character-select) in a video-file source so the
+    # demo starts on actual gameplay; the clip then loops back to this point.
+    cap_skip_secs = float(os.getenv("CAP_SKIP_SECS", "0"))
     s1_url = os.getenv("S1_URL", "http://localhost:8001/infer")
     s2_url = os.getenv("S2_URL", "http://localhost:8002/counterfactual")
     s1_hz = float(os.getenv("S1_HZ", "7.0"))
@@ -116,7 +120,7 @@ async def run() -> None:
         dashboard.log(msg)
 
     try:
-        cap = Capture(device_index=cap_dev)
+        cap = Capture(device_index=cap_dev, start_sec=cap_skip_secs)
     except RuntimeError as e:
         print(f"[main] capture failed: {e}")
         print("[main] tip: try CAP_DEV=1 or CAP_DEV=2; "
@@ -330,6 +334,13 @@ async def run() -> None:
                     cv2.destroyWindow("dashboard")
                 except cv2.error:
                     pass
+
+        # Pace playback + yield to the event loop so the in-flight S1 request
+        # and any pending S2 task make progress. For a video-file source this
+        # throttles to the clip's native FPS; for a live device (frame_interval
+        # == 0) it's just a cooperative yield.
+        sleep_left = cap.frame_interval - (time.monotonic() - t)
+        await asyncio.sleep(sleep_left if sleep_left > 0 else 0)
 
     cap.close()
     if recorder is not None:

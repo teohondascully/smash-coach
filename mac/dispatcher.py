@@ -11,6 +11,7 @@ silently so the HUD falls through to last-known state.
 """
 from __future__ import annotations
 
+import asyncio
 import base64
 import time
 from collections import deque
@@ -73,23 +74,49 @@ class System1Client:
         # Adaptive sampling: when both players are in "neutral", double the
         # interval each call up to 8x. Resets on the first non-neutral label.
         self._neutral_streak: int = 0
+        # The S1 HTTP call runs as a background task so the capture/display loop
+        # is never blocked waiting on inference (~1.2s warm). At most one request
+        # is in flight; ``maybe_infer`` harvests the result when it lands.
+        self._inflight: Optional[asyncio.Task] = None
 
     def _maybe_buffer(self, img: np.ndarray, t: float) -> None:
         if not self._buf or (t - self._buf[-1][0]) >= self.stack_interval_s:
             self._buf.append((t, img))
 
     async def maybe_infer(self, img: np.ndarray, t: float) -> Optional[S1Out]:
+        """Non-blocking. Buffers the frame, harvests a finished inference (if
+        any), and launches a new background request when the rate limiter allows
+        and none is in flight. Returns a fresh ``S1Out`` exactly once per
+        completed request, else ``None`` — so the caller never stalls on S1.
+        """
         self._maybe_buffer(img, t)
 
+        # Harvest a completed in-flight request (returned once, to the caller).
+        result: Optional[S1Out] = None
+        if self._inflight is not None and self._inflight.done():
+            try:
+                result = self._inflight.result()
+            except Exception:  # noqa: BLE001 — network/parse errors degrade to None
+                result = None
+            self._inflight = None
+
+        # Launch a new request if the limiter allows and nothing is in flight.
         now = time.monotonic()
         effective_interval = self.min_interval * (2 ** min(self._neutral_streak, 3))
-        if now - self._last_sent < effective_interval:
-            return None
-        if len(self._buf) < self.stack_size:
-            return None
-        self._last_sent = now
+        if (
+            self._inflight is None
+            and now - self._last_sent >= effective_interval
+            and len(self._buf) >= self.stack_size
+        ):
+            self._last_sent = now
+            frames = list(self._buf)
+            self._inflight = asyncio.create_task(self._do_infer(frames, t))
 
-        frames = list(self._buf)
+        return result
+
+    async def _do_infer(
+        self, frames: list[tuple[float, np.ndarray]], t: float
+    ) -> Optional[S1Out]:
         try:
             images_b64: list[str] = []
             ts: list[float] = []
@@ -115,4 +142,6 @@ class System1Client:
             return None
 
     async def aclose(self) -> None:
+        if self._inflight is not None:
+            self._inflight.cancel()
         await self._client.aclose()
