@@ -1,0 +1,3227 @@
+{
+  "meta": {
+    "input": "data/gameplay.mov",
+    "url": "http://localhost:8003/infer",
+    "interval": 0.5,
+    "start": 11.0,
+    "end": 0.0,
+    "prep": 640,
+    "count": 189,
+    "generated": "2026-06-20 21:16:22"
+  },
+  "entries": [
+    {
+      "video_t": 11.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 11.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 12.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 12.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 13.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 13.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0.0,
+        "intent": "unknown"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0.0,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 14.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0,
+        "intent": "unknown"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 14.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 15.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 15.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 16.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 16.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 17.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 17.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 18.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 18.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 19.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 19.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 20.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "dodge",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 20.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 21.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 21.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 22.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 22.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "attack_ground",
+        "phase": "endlag",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 23.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 7,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 23.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 16,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 24.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 16,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 24.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 16,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 25.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 16,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 25.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 16,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 26.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 37,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 26.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "moving",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 27.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 27.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 28.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 28.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 29.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 29.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 30.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 30.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 41,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 31.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 41,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 31.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 41,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 32.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 41,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 32.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 33.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 33.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 34.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 34.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 35.0,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 35.5,
+      "p1": {
+        "damage_pct": 0,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 36.0,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 51,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 36.5,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 6,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 37.0,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 37.5,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 38.0,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 38.5,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 39.0,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 39.5,
+      "p1": {
+        "damage_pct": 9,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 40.0,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 40.5,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 41.0,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 41.5,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 42.0,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 61,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 42.5,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 43.0,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 43.5,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "dodge",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 44.0,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 44.5,
+      "p1": {
+        "damage_pct": 23,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 45.0,
+      "p1": {
+        "damage_pct": 36,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 45.5,
+      "p1": {
+        "damage_pct": 70,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 33,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 46.0,
+      "p1": {
+        "damage_pct": 33,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0,
+        "intent": "unknown"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 46.5,
+      "p1": {
+        "damage_pct": 33,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 47.0,
+      "p1": {
+        "damage_pct": 33,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 47.5,
+      "p1": {
+        "damage_pct": 33,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 48.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_ground",
+        "phase": "endlag",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 48.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 49.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 49.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 50.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 50.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 51.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 51.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 52.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 52.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 53.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 53.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 54.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 70,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 54.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 8,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 55.0,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 55.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 56.0,
+      "p1": {
+        "damage_pct": 88,
+        "action_label": "dodge",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 40,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 56.5,
+      "p1": {
+        "damage_pct": 40,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 57.0,
+      "p1": {
+        "damage_pct": 5,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 57.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 58.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 58.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 59.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 59.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 60.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 60.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 61.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 61.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 62.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 62.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 63.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 88,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 63.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 64.0,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 96,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 64.5,
+      "p1": {
+        "damage_pct": 58,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 96,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 65.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 96,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 65.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 96,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 66.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 96,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 66.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 15,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 67.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 67.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 68.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 68.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 69.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 69.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 70.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 70.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 71.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 71.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "punishing"
+      }
+    },
+    {
+      "video_t": 72.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 72.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 73.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 73.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 74.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "attack_ground",
+        "phase": "endlag",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 74.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 75.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 111,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 75.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "punishing"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 76.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 76.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 77.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 77.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 78.0,
+      "p1": {
+        "damage_pct": 118,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 78.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 118,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 79.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 79.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 80.0,
+      "p1": {
+        "damage_pct": 130,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 80.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 81.0,
+      "p1": {
+        "damage_pct": 130,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 81.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 82.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 82.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 83.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 83.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 84.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 84.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 85.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 130,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 85.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 144,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 86.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 144,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 86.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 87.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 87.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 88.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 88.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 89.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 89.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 90.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 90.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 91.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 91.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 92.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 92.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 93.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 0,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 93.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 94.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 94.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "attack_ground",
+        "phase": "endlag",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 95.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "dodge",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 95.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 96.0,
+      "p1": {
+        "damage_pct": 13,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 96.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 97.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 13,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 97.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 98.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 98.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.95,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 99.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 99.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "unknown",
+        "phase": "unknown",
+        "confidence": 0,
+        "intent": "unknown"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 100.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 100.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 101.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "offstage",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 101.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 102.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "unknown"
+      }
+    },
+    {
+      "video_t": 102.5,
+      "p1": {
+        "damage_pct": 21,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 1.0,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 1.0,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 103.0,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "attack_air",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "pressuring"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "jump",
+        "phase": "neutral",
+        "confidence": 0.8,
+        "intent": "recovering"
+      }
+    },
+    {
+      "video_t": 103.5,
+      "p1": {
+        "damage_pct": 65,
+        "action_label": "hitstun",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "neutral"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "attack_ground",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "pressuring"
+      }
+    },
+    {
+      "video_t": 104.0,
+      "p1": {
+        "damage_pct": 76,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 104.5,
+      "p1": {
+        "damage_pct": 76,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "idle",
+        "phase": "neutral",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    },
+    {
+      "video_t": 105.0,
+      "p1": {
+        "damage_pct": 76,
+        "action_label": "jump",
+        "phase": "active",
+        "confidence": 0.95,
+        "intent": "recovering"
+      },
+      "p2": {
+        "damage_pct": 21,
+        "action_label": "shield",
+        "phase": "active",
+        "confidence": 0.9,
+        "intent": "neutral"
+      }
+    }
+  ]
+}
