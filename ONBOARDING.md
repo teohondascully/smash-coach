@@ -142,13 +142,61 @@ S1_URL=http://<pod>:8001/infer uv run python scripts/bench_s1.py  # S1 latency b
 - Servers run as plain `uvicorn` in tmux/screen panes on the pod (no systemd).
 - Logs are stdout. If a server crashes, check the pane.
 
-To SSH in (after Player 1 has added your public key to `~/.ssh/authorized_keys` on the pod):
+### How you (Player 2) join Player 1's existing pod
+
+We do NOT have you provision your own pod. You share Player 1's pod via shared API key + SSH. Two-step setup:
+
+**1. Install + authenticate Prime Intellect CLI** (gives you pod listing, status, ssh, terminate):
 
 ```bash
+uv tool install -U prime
+prime login
+# Paste Player 1's API key when prompted (he'll DM it to you).
+```
+
+Verify:
+```bash
+prime whoami --plain         # should show Player 1's account
+prime pods list --plain      # should show 'smashpod' RUNNING
+prime wallet --plain         # see remaining $; check this often
+```
+
+**2. SSH in.** Two equivalent ways:
+
+```bash
+# via prime (auto-uses Player 1's pod registration):
 prime pods ssh <pod-id>
-# or directly:
+
+# or directly with the IP, after Player 1 appends your public key to
+# ~/.ssh/authorized_keys on the pod:
 ssh ubuntu@<pod-ip>
 ```
+
+The first form (`prime pods ssh`) will Just Work because you're authenticated as Player 1 — no separate key wrangling needed. The second is the backup if the prime CLI gets weird.
+
+### How to safely terminate the pod
+
+Yes, you can stop the meter — please do if you're the last one to walk away from it.
+
+```bash
+# what's currently spinning?
+prime pods list --plain
+prime pods status <pod-id> --plain
+prime wallet --plain               # current spend
+
+# stop the meter:
+prime pods terminate <pod-id> --yes --plain
+```
+
+Or use the bundled script:
+
+```bash
+./scripts/pod_down.sh <pod-id>
+```
+
+**Coordinate before terminating.** Drop a message in chat saying "terminating pod in 60s, stop me if you're using it" — gives Player 1 a chance to halt you if he's mid-demo-prep. The pod's $3.30/hr; mid-task interruption is annoying but not catastrophic. Re-provisioning takes ~5 min via `./scripts/pod_up.sh` and re-downloading the 32GB AWQ model takes another ~10 min, so don't terminate casually if either of you is actively using S1/S2.
+
+Rule of thumb: **if no one will touch it in the next 30 minutes, terminate.**
 
 ## Player 2 setup (no Switch, no Cam Link)
 
