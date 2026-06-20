@@ -20,6 +20,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 URLS = {
     "joker": "https://ultimateframedata.com/joker",
     "toon_link": "https://ultimateframedata.com/toon_link",
+    "ike": "https://ultimateframedata.com/ike",
 }
 
 # Map raw scraped lowercased move-name (with spaces collapsed) -> canonical
@@ -83,6 +84,18 @@ JOKER_SPECIAL_MAP: dict[str, str] = {
     "down special": "tetrakarn",
 }
 
+IKE_SPECIAL_MAP: dict[str, str] = {
+    "eruption": "eruption",
+    "quick draw": "quick_draw",
+    "quickdraw": "quick_draw",
+    "aether": "aether",
+    "counter": "counter",
+    "neutral special": "eruption",
+    "side special": "quick_draw",
+    "up special": "aether",
+    "down special": "counter",
+}
+
 TOONLINK_SPECIAL_MAP: dict[str, str] = {
     "boomerang": "boomerang",
     "bomb": "bomb_pull",
@@ -118,7 +131,12 @@ def _canonicalize(name_raw: str, char: str) -> Optional[str]:
     s = re.sub(r"\s+", " ", s)
     if s in COMMON_NAME_MAP:
         return COMMON_NAME_MAP[s]
-    sp = JOKER_SPECIAL_MAP if char == "joker" else TOONLINK_SPECIAL_MAP
+    if char == "joker":
+        sp = JOKER_SPECIAL_MAP
+    elif char == "ike":
+        sp = IKE_SPECIAL_MAP
+    else:
+        sp = TOONLINK_SPECIAL_MAP
     for key, canon in sp.items():
         if key in s:
             return canon
@@ -162,6 +180,12 @@ def _range_estimate(canon: str) -> str:
         return "medium"
     if canon in {"arrow", "boomerang", "gun", "eiha", "eigaon", "bomb_throw", "hookshot"}:
         return "long"
+    if canon in {"eruption", "quick_draw"}:
+        return "medium"
+    if canon == "aether":
+        return "medium"
+    if canon == "counter":
+        return "short"
     return "medium"
 
 
@@ -263,6 +287,28 @@ TOONLINK_FALLBACK: list[dict] = [
 ]
 
 
+IKE_FALLBACK: list[dict] = [
+    {"name": "jab", "startup_f": 4, "active_f": [4, 5], "endlag_f": 22, "landing_lag_f": None, "shield_advantage": -9, "on_hit_advantage": None, "range_estimate": "short", "category": "ground"},
+    {"name": "ftilt", "startup_f": 11, "active_f": [11, 13], "endlag_f": 35, "landing_lag_f": None, "shield_advantage": -10, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "utilt", "startup_f": 9, "active_f": [9, 14], "endlag_f": 36, "landing_lag_f": None, "shield_advantage": -14, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "dtilt", "startup_f": 7, "active_f": [7, 9], "endlag_f": 26, "landing_lag_f": None, "shield_advantage": -8, "on_hit_advantage": None, "range_estimate": "short", "category": "ground"},
+    {"name": "dashattack", "startup_f": 16, "active_f": [16, 22], "endlag_f": 48, "landing_lag_f": None, "shield_advantage": -16, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "fsmash", "startup_f": 22, "active_f": [22, 24], "endlag_f": 58, "landing_lag_f": None, "shield_advantage": -22, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "usmash", "startup_f": 15, "active_f": [15, 17], "endlag_f": 50, "landing_lag_f": None, "shield_advantage": -18, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "dsmash", "startup_f": 13, "active_f": [13, 16], "endlag_f": 52, "landing_lag_f": None, "shield_advantage": -19, "on_hit_advantage": None, "range_estimate": "medium", "category": "ground"},
+    {"name": "nair", "startup_f": 7, "active_f": [7, 12], "endlag_f": 42, "landing_lag_f": 10, "shield_advantage": -8, "on_hit_advantage": None, "range_estimate": "medium", "category": "aerial"},
+    {"name": "fair", "startup_f": 13, "active_f": [13, 16], "endlag_f": 48, "landing_lag_f": 14, "shield_advantage": -12, "on_hit_advantage": None, "range_estimate": "medium", "category": "aerial"},
+    {"name": "bair", "startup_f": 10, "active_f": [10, 13], "endlag_f": 44, "landing_lag_f": 12, "shield_advantage": -10, "on_hit_advantage": None, "range_estimate": "medium", "category": "aerial"},
+    {"name": "uair", "startup_f": 8, "active_f": [8, 12], "endlag_f": 40, "landing_lag_f": 11, "shield_advantage": -10, "on_hit_advantage": None, "range_estimate": "medium", "category": "aerial"},
+    {"name": "dair", "startup_f": 15, "active_f": [15, 19], "endlag_f": 55, "landing_lag_f": 22, "shield_advantage": -20, "on_hit_advantage": None, "range_estimate": "medium", "category": "aerial"},
+    {"name": "grab", "startup_f": 7, "active_f": [7, 9], "endlag_f": 35, "landing_lag_f": None, "shield_advantage": None, "on_hit_advantage": None, "range_estimate": "short", "category": "grab"},
+    {"name": "eruption", "startup_f": 22, "active_f": [22, 30], "endlag_f": 80, "landing_lag_f": None, "shield_advantage": -30, "on_hit_advantage": None, "range_estimate": "medium", "category": "special"},
+    {"name": "quick_draw", "startup_f": 20, "active_f": [20, 40], "endlag_f": 60, "landing_lag_f": None, "shield_advantage": -18, "on_hit_advantage": None, "range_estimate": "medium", "category": "special"},
+    {"name": "aether", "startup_f": 11, "active_f": [11, 60], "endlag_f": 90, "landing_lag_f": None, "shield_advantage": -30, "on_hit_advantage": None, "range_estimate": "medium", "category": "special"},
+    {"name": "counter", "startup_f": 6, "active_f": [6, 25], "endlag_f": 60, "landing_lag_f": None, "shield_advantage": None, "on_hit_advantage": None, "range_estimate": "short", "category": "special"},
+]
+
+
 def _merge_with_fallback(scraped: dict[str, dict], fallback: list[dict]) -> list[dict]:
     """Use scraped data when available, fall back for missing canonical names."""
     by_name = dict(scraped)
@@ -274,7 +320,11 @@ def _merge_with_fallback(scraped: dict[str, dict], fallback: list[dict]) -> list
 
 def main() -> None:
     out: dict[str, list[dict]] = {}
-    fallbacks = {"joker": JOKER_FALLBACK, "toon_link": TOONLINK_FALLBACK}
+    fallbacks = {
+        "joker": JOKER_FALLBACK,
+        "toon_link": TOONLINK_FALLBACK,
+        "ike": IKE_FALLBACK,
+    }
     for char, url in URLS.items():
         scraped: dict[str, dict] = {}
         try:
@@ -288,7 +338,8 @@ def main() -> None:
     (REPO_ROOT / "data/frame_data.json").write_text(json.dumps(out, indent=2))
     print(
         f"wrote {sum(len(v) for v in out.values())} moves "
-        f"(joker={len(out['joker'])}, toon_link={len(out['toon_link'])})"
+        f"(joker={len(out['joker'])}, toon_link={len(out['toon_link'])}, "
+        f"ike={len(out['ike'])})"
     )
 
 

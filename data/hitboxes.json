@@ -33,5 +33,9 @@
     "nair": [
       {"dx": 0, "dy": 0, "radius": 18, "active_frames": [7, 11]}
     ]
+  },
+  "ike": {
+    "fsmash": [{"dx": 42, "dy": -8, "radius": 24, "active_frames": [22, 24]}],
+    "usmash": [{"dx": 0, "dy": -36, "radius": 26, "active_frames": [15, 17]}]
   }
 }

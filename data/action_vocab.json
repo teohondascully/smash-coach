@@ -18,5 +18,13 @@
     "nair", "fair", "bair", "uair", "dair",
     "grab", "fthrow", "bthrow", "uthrow", "dthrow",
     "boomerang", "bomb_pull", "bomb_throw", "arrow", "spin_attack", "hookshot"
+  ],
+  "ike": [
+    "neutral", "walk", "dash", "shield", "roll", "spotdodge", "airdodge",
+    "jab", "ftilt", "utilt", "dtilt", "dashattack",
+    "fsmash", "usmash", "dsmash",
+    "nair", "fair", "bair", "uair", "dair",
+    "grab", "fthrow", "bthrow", "uthrow", "dthrow",
+    "eruption", "quick_draw", "aether", "counter"
   ]
 }

@@ -11,8 +11,17 @@ def test_load_succeeds():
     fd = FrameData.load(FD_PATH, HB_PATH)
     assert "joker" in fd.moves
     assert "toon_link" in fd.moves
+    assert "ike" in fd.moves
     assert len(fd.moves["joker"]) >= 14
     assert len(fd.moves["toon_link"]) >= 14
+    assert len(fd.moves["ike"]) >= 14
+
+
+def test_lookup_ike_move():
+    fd = FrameData.load(FD_PATH, HB_PATH)
+    m = fd.move("ike", "fsmash")
+    assert isinstance(m, Move)
+    assert m.startup_f is not None and m.startup_f > 0
 
 
 def test_lookup_known_move():

@@ -289,39 +289,39 @@
         5,
         6
       ],
-      "endlag_f": 12,
+      "endlag_f": 20,
       "landing_lag_f": null,
-      "shield_advantage": -10,
+      "shield_advantage": -8,
       "on_hit_advantage": null,
       "range_estimate": "short",
       "category": "ground"
     },
     {
       "name": "ftilt",
-      "startup_f": 9,
+      "startup_f": 10,
       "active_f": [
-        9,
-        13
+        10,
+        12
       ],
-      "endlag_f": 16,
+      "endlag_f": 31,
       "landing_lag_f": null,
-      "shield_advantage": -11,
+      "shield_advantage": -10,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "ground"
     },
     {
       "name": "utilt",
-      "startup_f": 8,
+      "startup_f": 6,
       "active_f": [
-        8,
-        12
+        6,
+        11
       ],
-      "endlag_f": 13,
+      "endlag_f": 27,
       "landing_lag_f": null,
-      "shield_advantage": -11,
+      "shield_advantage": -9,
       "on_hit_advantage": null,
-      "range_estimate": "medium",
+      "range_estimate": "short",
       "category": "ground"
     },
     {
@@ -331,7 +331,7 @@
         9,
         10
       ],
-      "endlag_f": 12,
+      "endlag_f": 23,
       "landing_lag_f": null,
       "shield_advantage": -6,
       "on_hit_advantage": null,
@@ -340,42 +340,42 @@
     },
     {
       "name": "dashattack",
-      "startup_f": 7,
+      "startup_f": 12,
       "active_f": [
-        7,
-        9
+        12,
+        16
       ],
-      "endlag_f": 19,
+      "endlag_f": 40,
       "landing_lag_f": null,
-      "shield_advantage": -13,
+      "shield_advantage": -11,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "ground"
     },
     {
       "name": "fsmash",
-      "startup_f": 16,
+      "startup_f": 15,
       "active_f": [
-        16,
+        15,
         17
       ],
-      "endlag_f": 31,
+      "endlag_f": 45,
       "landing_lag_f": null,
-      "shield_advantage": -22,
+      "shield_advantage": -14,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "ground"
     },
     {
       "name": "usmash",
-      "startup_f": 11,
+      "startup_f": 13,
       "active_f": [
-        11,
-        15
+        13,
+        16
       ],
-      "endlag_f": 27,
+      "endlag_f": 47,
       "landing_lag_f": null,
-      "shield_advantage": -22,
+      "shield_advantage": -19,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "ground"
@@ -385,25 +385,25 @@
       "startup_f": 9,
       "active_f": [
         9,
-        18
+        11
       ],
-      "endlag_f": 28,
+      "endlag_f": 49,
       "landing_lag_f": null,
-      "shield_advantage": -29,
+      "shield_advantage": -18,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "ground"
     },
     {
       "name": "nair",
-      "startup_f": 6,
+      "startup_f": 7,
       "active_f": [
-        6,
-        14
+        7,
+        11
       ],
-      "endlag_f": 27,
+      "endlag_f": 39,
       "landing_lag_f": 7,
-      "shield_advantage": -3,
+      "shield_advantage": -7,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "aerial"
@@ -413,11 +413,11 @@
       "startup_f": 14,
       "active_f": [
         14,
-        15
+        16
       ],
-      "endlag_f": 23,
+      "endlag_f": 43,
       "landing_lag_f": 11,
-      "shield_advantage": -6,
+      "shield_advantage": -10,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "aerial"
@@ -429,96 +429,68 @@
         6,
         9
       ],
-      "endlag_f": 26,
-      "landing_lag_f": 8,
-      "shield_advantage": -4,
+      "endlag_f": 40,
+      "landing_lag_f": 9,
+      "shield_advantage": -8,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "aerial"
     },
     {
       "name": "uair",
-      "startup_f": 11,
+      "startup_f": 10,
       "active_f": [
-        11,
-        40
+        10,
+        13
       ],
-      "endlag_f": 19,
-      "landing_lag_f": 13,
-      "shield_advantage": -8,
+      "endlag_f": 41,
+      "landing_lag_f": 10,
+      "shield_advantage": -11,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "aerial"
     },
     {
       "name": "dair",
-      "startup_f": 17,
+      "startup_f": 16,
       "active_f": [
-        17,
-        1
+        16,
+        24
       ],
-      "endlag_f": 15,
-      "landing_lag_f": 23,
-      "shield_advantage": -17,
+      "endlag_f": 60,
+      "landing_lag_f": 18,
+      "shield_advantage": -20,
       "on_hit_advantage": null,
       "range_estimate": "medium",
       "category": "aerial"
     },
     {
-      "name": "arrow",
-      "startup_f": 18,
+      "name": "grab",
+      "startup_f": 13,
       "active_f": [
-        18,
-        77
+        13,
+        27
       ],
-      "endlag_f": 39,
+      "endlag_f": 70,
       "landing_lag_f": null,
-      "shield_advantage": -12,
+      "shield_advantage": null,
       "on_hit_advantage": null,
       "range_estimate": "long",
-      "category": "special"
+      "category": "grab"
     },
     {
       "name": "boomerang",
-      "startup_f": 27,
+      "startup_f": 14,
       "active_f": [
-        27,
-        173
+        14,
+        80
       ],
-      "endlag_f": 45,
-      "landing_lag_f": null,
-      "shield_advantage": -9,
-      "on_hit_advantage": null,
-      "range_estimate": "long",
-      "category": "special"
-    },
-    {
-      "name": "spin_attack",
-      "startup_f": 6,
-      "active_f": [
-        6,
-        4
-      ],
-      "endlag_f": 29,
-      "landing_lag_f": null,
-      "shield_advantage": -25,
-      "on_hit_advantage": null,
-      "range_estimate": "medium",
-      "category": "special"
-    },
-    {
-      "name": "grab",
-      "startup_f": 12,
-      "active_f": [
-        12,
-        18
-      ],
-      "endlag_f": 34,
+      "endlag_f": 50,
       "landing_lag_f": null,
       "shield_advantage": -8,
       "on_hit_advantage": null,
-      "range_estimate": "medium",
-      "category": "grab"
+      "range_estimate": "long",
+      "category": "special"
     },
     {
       "name": "bomb_pull",
@@ -549,6 +521,34 @@
       "category": "special"
     },
     {
+      "name": "arrow",
+      "startup_f": 17,
+      "active_f": [
+        17,
+        50
+      ],
+      "endlag_f": 55,
+      "landing_lag_f": null,
+      "shield_advantage": -10,
+      "on_hit_advantage": null,
+      "range_estimate": "long",
+      "category": "special"
+    },
+    {
+      "name": "spin_attack",
+      "startup_f": 9,
+      "active_f": [
+        9,
+        25
+      ],
+      "endlag_f": 70,
+      "landing_lag_f": null,
+      "shield_advantage": -25,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "special"
+    },
+    {
       "name": "hookshot",
       "startup_f": 11,
       "active_f": [
@@ -560,6 +560,260 @@
       "shield_advantage": -15,
       "on_hit_advantage": null,
       "range_estimate": "long",
+      "category": "special"
+    }
+  ],
+  "ike": [
+    {
+      "name": "jab",
+      "startup_f": 4,
+      "active_f": [
+        4,
+        5
+      ],
+      "endlag_f": 18,
+      "landing_lag_f": null,
+      "shield_advantage": -15,
+      "on_hit_advantage": null,
+      "range_estimate": "short",
+      "category": "ground"
+    },
+    {
+      "name": "ftilt",
+      "startup_f": 12,
+      "active_f": [
+        12,
+        13
+      ],
+      "endlag_f": 28,
+      "landing_lag_f": null,
+      "shield_advantage": -17,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "utilt",
+      "startup_f": 11,
+      "active_f": [
+        11,
+        21
+      ],
+      "endlag_f": 18,
+      "landing_lag_f": null,
+      "shield_advantage": -17,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "dtilt",
+      "startup_f": 7,
+      "active_f": [
+        7,
+        8
+      ],
+      "endlag_f": 20,
+      "landing_lag_f": null,
+      "shield_advantage": -13,
+      "on_hit_advantage": null,
+      "range_estimate": "short",
+      "category": "ground"
+    },
+    {
+      "name": "dashattack",
+      "startup_f": 15,
+      "active_f": [
+        15,
+        19
+      ],
+      "endlag_f": 28,
+      "landing_lag_f": null,
+      "shield_advantage": -17,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "fsmash",
+      "startup_f": 31,
+      "active_f": [
+        31,
+        35
+      ],
+      "endlag_f": 48,
+      "landing_lag_f": null,
+      "shield_advantage": -39,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "usmash",
+      "startup_f": 25,
+      "active_f": [
+        25,
+        31
+      ],
+      "endlag_f": 39,
+      "landing_lag_f": null,
+      "shield_advantage": -34,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "dsmash",
+      "startup_f": 13,
+      "active_f": [
+        13,
+        36
+      ],
+      "endlag_f": 34,
+      "landing_lag_f": null,
+      "shield_advantage": -46,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "ground"
+    },
+    {
+      "name": "nair",
+      "startup_f": 10,
+      "active_f": [
+        10,
+        22
+      ],
+      "endlag_f": 37,
+      "landing_lag_f": 8,
+      "shield_advantage": -5,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "aerial"
+    },
+    {
+      "name": "fair",
+      "startup_f": 11,
+      "active_f": [
+        11,
+        15
+      ],
+      "endlag_f": 36,
+      "landing_lag_f": 14,
+      "shield_advantage": -9,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "aerial"
+    },
+    {
+      "name": "bair",
+      "startup_f": 7,
+      "active_f": [
+        7,
+        9
+      ],
+      "endlag_f": 45,
+      "landing_lag_f": 11,
+      "shield_advantage": -6,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "aerial"
+    },
+    {
+      "name": "uair",
+      "startup_f": 13,
+      "active_f": [
+        13,
+        18
+      ],
+      "endlag_f": 38,
+      "landing_lag_f": 9,
+      "shield_advantage": -5,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "aerial"
+    },
+    {
+      "name": "dair",
+      "startup_f": 16,
+      "active_f": [
+        16,
+        17
+      ],
+      "endlag_f": 37,
+      "landing_lag_f": 14,
+      "shield_advantage": -9,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "aerial"
+    },
+    {
+      "name": "counter",
+      "startup_f": 4,
+      "active_f": [
+        4,
+        5
+      ],
+      "endlag_f": 38,
+      "landing_lag_f": null,
+      "shield_advantage": -8,
+      "on_hit_advantage": null,
+      "range_estimate": "short",
+      "category": "special"
+    },
+    {
+      "name": "grab",
+      "startup_f": 7,
+      "active_f": [
+        7,
+        8
+      ],
+      "endlag_f": 28,
+      "landing_lag_f": null,
+      "shield_advantage": -8,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "grab"
+    },
+    {
+      "name": "eruption",
+      "startup_f": 22,
+      "active_f": [
+        22,
+        30
+      ],
+      "endlag_f": 80,
+      "landing_lag_f": null,
+      "shield_advantage": -30,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "special"
+    },
+    {
+      "name": "quick_draw",
+      "startup_f": 20,
+      "active_f": [
+        20,
+        40
+      ],
+      "endlag_f": 60,
+      "landing_lag_f": null,
+      "shield_advantage": -18,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
+      "category": "special"
+    },
+    {
+      "name": "aether",
+      "startup_f": 11,
+      "active_f": [
+        11,
+        60
+      ],
+      "endlag_f": 90,
+      "landing_lag_f": null,
+      "shield_advantage": -30,
+      "on_hit_advantage": null,
+      "range_estimate": "medium",
       "category": "special"
     }
   ]
