@@ -22,7 +22,7 @@ from typing import Any
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from server.prompts.system1 import MATCHUP_ACTIONS
+from server.prompts.system1 import COARSE_ACTIONS
 from server.prompts.system2 import COUNTERFACTUAL_SCHEMA
 
 
@@ -76,18 +76,17 @@ def infer(req: FrameIn) -> dict:
     """Return a schema-conformant fake S1 response. ~30ms artificial delay
     so the dispatcher's rate limiting and async path are exercised."""
     _world.step()
-    p1_actions = MATCHUP_ACTIONS["toon_link"]
-    p2_actions = MATCHUP_ACTIONS["ike"]
 
-    # Most of the time players are "neutral"; occasionally pick a move so
-    # the HUD has something to render.
-    def _pick(actions: list[str]) -> str:
+    # Coarse states matching System 1's real (post-rework) output contract.
+    # Mostly "idle"; occasionally an active state so the HUD has something to
+    # render and triggers can fire.
+    def _pick() -> str:
         if random.random() < 0.4:
-            return random.choice([a for a in actions if a != "neutral"])
-        return "neutral"
+            return random.choice([a for a in COARSE_ACTIONS if a not in ("idle", "unknown")])
+        return "idle"
 
-    p1_label = _pick(p1_actions)
-    p2_label = _pick(p2_actions)
+    p1_label = _pick()
+    p2_label = _pick()
     phases = ["startup", "active", "endlag", "neutral"]
 
     time.sleep(0.03)  # simulate VLM latency
@@ -96,14 +95,14 @@ def infer(req: FrameIn) -> dict:
         "p1": {
             "damage_pct": int(_world.damage["p1"]),
             "action_label": p1_label,
-            "phase": "neutral" if p1_label == "neutral" else random.choice(phases),
+            "phase": "neutral" if p1_label == "idle" else random.choice(phases),
             "confidence": round(random.uniform(0.6, 0.95), 2),
             "intent": "neutral",
         },
         "p2": {
             "damage_pct": int(_world.damage["p2"]),
             "action_label": p2_label,
-            "phase": "neutral" if p2_label == "neutral" else random.choice(phases),
+            "phase": "neutral" if p2_label == "idle" else random.choice(phases),
             "confidence": round(random.uniform(0.6, 0.95), 2),
             "intent": "neutral",
         },

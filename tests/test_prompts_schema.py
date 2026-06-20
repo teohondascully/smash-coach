@@ -22,69 +22,52 @@ def test_system1_schema_is_valid_jsonschema():
     jsonschema.Draft7Validator.check_schema(schema)
 
 
-def test_system1_schema_accepts_valid_sample_toonlink_vs_joker():
-    from server.prompts.system1 import (
-        JOKER_ACTIONS,
-        TOONLINK_ACTIONS,
-        build_json_schema,
-    )
+def test_system1_schema_accepts_valid_coarse_sample():
+    from server.prompts.system1 import COARSE_ACTIONS, build_json_schema
 
     sample = {
         "p1": {
             "damage_pct": 0,
-            "action_label": TOONLINK_ACTIONS[0],
+            "action_label": "idle",
             "phase": "neutral",
             "confidence": 0.5,
             "intent": "neutral",
         },
         "p2": {
             "damage_pct": 47,
-            "action_label": JOKER_ACTIONS[0],
+            "action_label": "attack_ground",
             "phase": "startup",
             "confidence": 0.9,
             "intent": "pressuring",
         },
     }
+    assert {"idle", "attack_ground"} <= set(COARSE_ACTIONS)
     jsonschema.validate(
         instance=sample, schema=build_json_schema("toon_link", "joker")
     )
 
 
-def test_system1_schema_accepts_valid_sample_toonlink_vs_ike():
-    from server.prompts.system1 import (
-        IKE_ACTIONS,
-        TOONLINK_ACTIONS,
-        build_json_schema,
-    )
+def test_system1_schema_accepts_all_coarse_states():
+    from server.prompts.system1 import COARSE_ACTIONS, build_json_schema
 
-    sample = {
-        "p1": {
-            "damage_pct": 0,
-            "action_label": TOONLINK_ACTIONS[0],
-            "phase": "neutral",
-            "confidence": 0.5,
-            "intent": "neutral",
-        },
-        "p2": {
-            "damage_pct": 33,
-            "action_label": "aether",
-            "phase": "startup",
-            "confidence": 0.9,
-            "intent": "recovering",
-        },
-    }
-    assert "aether" in IKE_ACTIONS
-    jsonschema.validate(
-        instance=sample, schema=build_json_schema("toon_link", "ike")
-    )
+    schema = build_json_schema("toon_link", "ike")
+    for state in COARSE_ACTIONS:
+        sample = {
+            "p1": {"damage_pct": 0, "action_label": state, "phase": "neutral",
+                   "confidence": 0.5, "intent": "neutral"},
+            "p2": {"damage_pct": 33, "action_label": "offstage", "phase": "unknown",
+                   "confidence": 0.9, "intent": "recovering"},
+        }
+        jsonschema.validate(instance=sample, schema=schema)
 
 
-def test_system1_schema_rejects_invalid_action_label():
+def test_system1_schema_rejects_fine_grained_move_label():
+    # Fine move IDs (the old vocab) are no longer valid S1 outputs — coarse only.
     from server.prompts.system1 import build_json_schema
 
     bad = {
         "p1": {
-            "action_label": "definitely_not_a_real_toon_link_move",
+            "action_label": "fsmash",
             "phase": "neutral",
             "confidence": 0.5,
             "intent": "neutral",
