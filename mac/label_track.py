@@ -17,9 +17,27 @@ from pathlib import Path
 from mac.dispatcher import S1Out
 
 
+def _median3(vals: list[float]) -> list[float]:
+    """3-wide median filter — removes isolated single-sample outliers while
+    preserving sustained changes (real damage persists across many samples, so
+    only lone misreads get corrected)."""
+    n = len(vals)
+    if n < 3:
+        return list(vals)
+    out = list(vals)
+    for i in range(1, n - 1):
+        out[i] = sorted((vals[i - 1], vals[i], vals[i + 1]))[1]
+    return out
+
+
 class LabelTrack:
-    def __init__(self, entries: list[dict]):
+    def __init__(self, entries: list[dict], clean_damage: bool = True):
         self.entries = sorted(entries, key=lambda e: e["video_t"])
+        if clean_damage:
+            for who in ("p1", "p2"):
+                dmg = _median3([e[who]["damage_pct"] for e in self.entries])
+                for e, d in zip(self.entries, dmg):
+                    e[who]["damage_pct"] = d
         self._ts = [e["video_t"] for e in self.entries]
 
     @classmethod
