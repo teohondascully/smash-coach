@@ -22,8 +22,9 @@ class HUD:
 
     def draw(self, img, s: StateT, now: float, char_map: dict):
         out = img.copy()
-        self._draw_damage(out, s)
-        self._draw_action_labels(out, s)
+        # Damage is intentionally NOT drawn — the game already shows it. We read
+        # it into state for coaching/triggers, not to echo it back on screen.
+        self._draw_action_labels(out, s, char_map)
         self._draw_hitboxes(out, s, now, char_map)
         self._draw_threat_zones(out, s, char_map)
         return out
@@ -39,15 +40,27 @@ class HUD:
             (w - 340, h - 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 255), 3,
         )
 
-    def _draw_action_labels(self, img, s: StateT) -> None:
-        for who, color in (("p1", (255, 200, 0)), ("p2", (0, 200, 255))):
-            p = s.positions[who]
+    def _draw_action_labels(self, img, s: StateT, char_map: dict) -> None:
+        # Fixed, frame-relative anchors (P1 top-left, P2 top-right) so labels are
+        # always visible regardless of bbox detection or capture resolution.
+        # (The old bbox-anchored positions were calibrated for 1080p and pushed
+        # P2's label off-screen on a 720p source.)
+        h, w = img.shape[:2]
+        for who, color, anchor in (
+            ("p1", (255, 200, 0), "left"),
+            ("p2", (0, 200, 255), "right"),
+        ):
             a = s.actions[who]
-            txt = f"{a.label} [{a.phase}]"
-            cv2.putText(
-                img, txt, (int(p.x), int(p.y) - 20),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2,
-            )
+            name = char_map.get(who, who)
+            txt = f"{name}: {a.label}"
+            if a.phase not in ("neutral", "unknown"):
+                txt += f" [{a.phase}]"
+            (tw, th), _ = cv2.getTextSize(txt, cv2.FONT_HERSHEY_SIMPLEX, 0.9, 2)
+            y = 44
+            x = 30 if anchor == "left" else max(10, w - tw - 30)
+            cv2.rectangle(img, (x - 12, y - th - 14), (x + tw + 12, y + 14),
+                          (0, 0, 0), -1)
+            cv2.putText(img, txt, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
 
     def _draw_hitboxes(self, img, s: StateT, now: float, char_map: dict) -> None:
         for who in ("p1", "p2"):

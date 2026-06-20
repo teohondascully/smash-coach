@@ -108,11 +108,15 @@ def infer(req: FrameIn) -> dict:
     except Exception as e:  # noqa: BLE001
         raise HTTPException(status_code=400, detail=f"bad image: {e}") from e
 
-    sampling = _SamplingParams(
-        temperature=0.0,
-        max_tokens=256,
-        **{_SCHEMA_KWARG: _StructuredParams(json=SCHEMA)},
-    )
+    sp_kwargs = {
+        "temperature": 0.0,
+        "max_tokens": int(os.getenv("S1_MAX_TOKENS", "200")),
+    }
+    # S1_GUIDED=0 disables grammar-constrained JSON decoding (for latency
+    # diagnosis only — output may not be valid JSON without it).
+    if os.getenv("S1_GUIDED", "1") != "0":
+        sp_kwargs[_SCHEMA_KWARG] = _StructuredParams(json=SCHEMA)
+    sampling = _SamplingParams(**sp_kwargs)
     # User content: all frames (oldest first), then the analyze instruction.
     # Use the OpenAI-compatible image_url data-URI form — it's the most portable
     # image part type across vllm versions. Frames arrive JPEG-encoded from the

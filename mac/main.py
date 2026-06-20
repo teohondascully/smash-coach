@@ -132,7 +132,15 @@ async def run() -> None:
     onset = OnsetTracker()
     hud = HUD(fd, onset)
     buf = StateBuffer(window_seconds=10.0)
-    s1 = System1Client(url=s1_url, hz=s1_hz)
+    # Fewer frames/call = less vision-token cost = lower latency. Coarse states
+    # read fine from 1-2 frames. timeout generous so the cold first call (~5s)
+    # isn't dropped (async dispatch means it never blocks the loop anyway).
+    s1 = System1Client(
+        url=s1_url,
+        hz=s1_hz,
+        stack_size=int(os.getenv("S1_STACK", "2")),
+        timeout=float(os.getenv("S1_TIMEOUT", "20")),
+    )
     s2 = System2Client(url=s2_url)
     trigger = TriggerDetector(
         damage_delta=trigger_delta,
@@ -140,7 +148,10 @@ async def run() -> None:
         cooldown_s=trigger_cooldown,
     )
     rewind = RewindCardWindow(duration_s=rewind_secs)
-    smoother = LabelSmoother(k=3)
+    # k=1 (passthrough): the 3-vote majority was tuned for 60Hz flicker, but S1
+    # now updates ~1Hz with stable coarse labels, so a 3-window spans ~3s and
+    # just swallows transient actions (you'd see "idle" through a whole combo).
+    smoother = LabelSmoother(k=int(os.getenv("LABEL_SMOOTH_K", "1")))
     # Optional MP4 recording of the HUD output — bulletproof demo backup.
     # Initialized lazily on the first frame so the codec sees a real size.
     recorder: cv2.VideoWriter | None = None
