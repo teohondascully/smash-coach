@@ -5,6 +5,8 @@ __pycache__/
 *.egg-info/
 data/raw/
 *.mp4
+*.mov
 .DS_Store
 tests/fixtures/*.mp4
 data/ops_state.json
+.claude/

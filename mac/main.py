@@ -1,7 +1,8 @@
 """Smash Coach orchestrator.
 
 Env vars:
-  CAP_DEV         capture device index (default 0)
+  CAP_DEV         capture device index (default 0) OR path to a video file
+                  (e.g. /path/gameplay.mov) to run off a recorded clip
   S1_URL          System 1 endpoint   (default http://localhost:8001/infer)
   S2_URL          System 2 endpoint   (default http://localhost:8002/counterfactual)
   S1_HZ           System 1 poll rate  (default 7.0)
@@ -96,7 +97,10 @@ def _build_actions_intent(last_s1: S1Out | None, onset: OnsetTracker, t: float):
 
 
 async def run() -> None:
-    cap_dev = int(os.getenv("CAP_DEV", "0"))
+    # CAP_DEV is either a device index ("0", "1", ...) or a path to a video file
+    # (e.g. /path/gameplay.mov) for running the pipeline off a recorded clip.
+    cap_dev_raw = os.getenv("CAP_DEV", "0")
+    cap_dev: int | str = int(cap_dev_raw) if cap_dev_raw.isdigit() else cap_dev_raw
     s1_url = os.getenv("S1_URL", "http://localhost:8001/infer")
     s2_url = os.getenv("S2_URL", "http://localhost:8002/counterfactual")
     s1_hz = float(os.getenv("S1_HZ", "7.0"))

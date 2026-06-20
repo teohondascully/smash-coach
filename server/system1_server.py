@@ -26,7 +26,11 @@ app = FastAPI(title="Smash Coach System 1")
 # Module-level singletons populated at startup.
 _llm: Any = None
 _SamplingParams: Any = None
-_GuidedDecodingParams: Any = None
+_StructuredParams: Any = None
+# Which SamplingParams kwarg carries the JSON-schema constraint. vllm renamed
+# the guided-decoding API to "structured outputs" around 0.11, so we detect at
+# load time and stay compatible with both old and new vllm.
+_SCHEMA_KWARG: str = "structured_outputs"
 
 P1_CHAR = os.getenv("P1_CHAR", "toon_link")
 P2_CHAR = os.getenv("P2_CHAR", "ike")
@@ -44,14 +48,24 @@ class FrameIn(BaseModel):
 @app.on_event("startup")
 def load_model() -> None:
     """Load Qwen2.5-VL-7B via vLLM. Imports vLLM lazily here."""
-    global _llm, _SamplingParams, _GuidedDecodingParams
+    global _llm, _SamplingParams, _StructuredParams, _SCHEMA_KWARG
 
     # Lazy import: vllm is GPU-only and not installed on macOS.
     from vllm import LLM, SamplingParams  # type: ignore
-    from vllm.sampling_params import GuidedDecodingParams  # type: ignore
+
+    # Version-robust JSON-schema constraint API:
+    #   vllm >=0.11 → SamplingParams(structured_outputs=StructuredOutputsParams(json=...))
+    #   vllm <0.11  → SamplingParams(guided_decoding=GuidedDecodingParams(json=...))
+    try:
+        from vllm.sampling_params import StructuredOutputsParams as _SP  # type: ignore
+        _SCHEMA_KWARG = "structured_outputs"
+    except ImportError:
+        from vllm.sampling_params import GuidedDecodingParams as _SP  # type: ignore
+        _SCHEMA_KWARG = "guided_decoding"
 
     _SamplingParams = SamplingParams
-    _GuidedDecodingParams = GuidedDecodingParams
+    _StructuredParams = _SP
+    logger.info("Using vllm schema-constraint API: %s", _SCHEMA_KWARG)
 
     model_id = os.getenv("S1_MODEL", "Qwen/Qwen2.5-VL-7B-Instruct")
     tp = int(os.getenv("S1_TP", "1"))
@@ -61,7 +75,11 @@ def load_model() -> None:
         model=model_id,
         tensor_parallel_size=tp,
         gpu_memory_utilization=0.85,
-        max_model_len=8192,
+        # Headroom for a 3-frame stack of vision tokens + system prompt. The
+        # dispatcher downsizes frames to 640x640 (~few hundred tokens each), but
+        # 16k keeps us safe against larger/again-full-res inputs. Cheap for a 7B
+        # model on an 80GB card.
+        max_model_len=16384,
         limit_mm_per_prompt={"image": stack_size},
         # Prefix caching: the system prompt is constant across every call so
         # the cached prefix dominates the per-call cost.
@@ -93,11 +111,15 @@ def infer(req: FrameIn) -> dict:
     sampling = _SamplingParams(
         temperature=0.0,
         max_tokens=256,
-        guided_decoding=_GuidedDecodingParams(json=SCHEMA),
+        **{_SCHEMA_KWARG: _StructuredParams(json=SCHEMA)},
     )
     # User content: all frames (oldest first), then the analyze instruction.
+    # Use the OpenAI-compatible image_url data-URI form — it's the most portable
+    # image part type across vllm versions. Frames arrive JPEG-encoded from the
+    # dispatcher, so we reuse the base64 directly (no re-encode).
     user_content: list[dict] = [
-        {"type": "image", "image": im} for im in images
+        {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b}"}}
+        for b in req.images_b64
     ]
     t_span = (
         f"t={req.ts[-1]:.3f}s (latest of {len(images)} frames"
