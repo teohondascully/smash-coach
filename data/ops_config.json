@@ -1,0 +1,6 @@
+{
+  "agent_url": "http://localhost:9000",
+  "rate_per_hour_usd": 3.30,
+  "budget_usd": 100.0,
+  "poll_interval_s": 3.0
+}

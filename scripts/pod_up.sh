@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Provision the demo pod on Prime Intellect.
+# Edit POD_ID at the top to switch between offerings.
+# Usage: ./scripts/pod_up.sh
+set -euo pipefail
+
+POD_ID="${POD_ID:-72408b}"          # A100x2 on-demand, US, $3.30/hr
+POD_NAME="${POD_NAME:-smashpod}"
+
+cd "$(dirname "$0")/.."
+
+echo "=== Current wallet ==="
+prime wallet --plain
+
+echo
+echo "=== Confirming SKU $POD_ID is still available ==="
+prime availability list --gpu-type A100_80GB --gpu-count 2 --plain | grep "$POD_ID" || {
+    echo "  $POD_ID no longer available."
+    echo "  Re-run 'prime availability list --gpu-type A100_80GB --gpu-count 2 --plain' and update POD_ID."
+    exit 1
+}
+
+echo
+echo "=== Creating pod '$POD_NAME' from SKU $POD_ID ==="
+echo "  this will spend money — Ctrl-C in 5s to abort"
+sleep 5
+
+prime pods create \
+    --id "$POD_ID" \
+    --name "$POD_NAME" \
+    --yes \
+    --plain
+
+echo
+echo "=== Current pods ==="
+prime pods list --plain
+
+echo
+echo "Start the cost clock once the pod is running:"
+echo "  ./scripts/cost_start.sh"

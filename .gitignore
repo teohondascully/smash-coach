@@ -7,3 +7,4 @@ data/raw/
 *.mp4
 .DS_Store
 tests/fixtures/*.mp4
+data/ops_state.json
