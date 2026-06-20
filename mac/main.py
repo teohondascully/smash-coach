@@ -78,6 +78,19 @@ def _position_from_bbox(bb, default_x: float) -> PlayerState:
     )
 
 
+def _result_at(results, t: float):
+    """Most recent S1 result whose source-frame time is <= ``t``.
+
+    Used by the look-ahead sync: the displayed frame (delayed by DISPLAY_DELAY)
+    is paired with the S1 result computed *from that frame*, which by now has
+    come back — so labels line up with the action on screen.
+    """
+    for r in reversed(results):
+        if r.t <= t:
+            return r
+    return None
+
+
 def _build_actions_intent(last_s1: S1Out | None, onset: OnsetTracker, t: float):
     if last_s1 is None:
         return (
@@ -105,6 +118,9 @@ async def run() -> None:
     # Skip an intro (menus / character-select) in a video-file source so the
     # demo starts on actual gameplay; the clip then loops back to this point.
     cap_skip_secs = float(os.getenv("CAP_SKIP_SECS", "0"))
+    # Look-ahead sync: delay the displayed video by ~the S1 round-trip so each
+    # shown frame is paired with the label computed from it. 0 = live (no delay).
+    display_delay = float(os.getenv("DISPLAY_DELAY", "0"))
     s1_url = os.getenv("S1_URL", "http://localhost:8001/infer")
     s2_url = os.getenv("S2_URL", "http://localhost:8002/counterfactual")
     s1_hz = float(os.getenv("S1_HZ", "7.0"))
@@ -157,6 +173,10 @@ async def run() -> None:
     recorder: cv2.VideoWriter | None = None
 
     raw_frames: deque[tuple[float, np.ndarray]] = deque(maxlen=600)
+    # Look-ahead sync buffers: frames awaiting display, and recent S1 results
+    # keyed by their source-frame time.
+    disp_q: deque[tuple[float, np.ndarray]] = deque()
+    s1_results: deque[S1Out] = deque(maxlen=64)
     last_s1: S1Out | None = None
     last_s1_t: float | None = None
     last_s2_resp: dict | None = None
@@ -179,14 +199,42 @@ async def run() -> None:
         dlog("[main] DEBUG=on; dashboard window enabled")
 
     for frame in cap.frames():
-        t = frame.t
-        raw_frames.append((t, frame.img.copy()))
+        read_t = frame.t
+
+        # --- Producer: fire S1 on the freshly-read (look-ahead) frame ---------
+        t0 = time.monotonic()
+        out = await s1.maybe_infer(frame.img, read_t)
+        timing["s1_wait"] += time.monotonic() - t0
+        if out is not None:
+            out.p1["action_label"] = smoother.update("p1", out.p1["action_label"])
+            out.p2["action_label"] = smoother.update("p2", out.p2["action_label"])
+            s1_results.append(out)
+            onset.update("p1", out.p1["action_label"], out.t)
+            onset.update("p2", out.p2["action_label"], out.t)
+
+        disp_q.append((read_t, frame.img))
+
+        # --- Consumer gate: hold display back by display_delay so the S1 result
+        # computed FROM the displayed frame has had time to return. ------------
+        if (read_t - disp_q[0][0]) < display_delay:
+            sleep_left = cap.frame_interval - (time.monotonic() - read_t)
+            await asyncio.sleep(sleep_left if sleep_left > 0 else 0)
+            continue
+        t, cur_img = disp_q.popleft()
+
+        # Pair the displayed frame with the label computed from it.
+        matched = _result_at(s1_results, t)
+        if matched is not None:
+            last_s1 = matched
+            last_s1_t = time.monotonic()
+
+        raw_frames.append((t, cur_img.copy()))
 
         # Tier 0 (stocks only — damage now comes from System 1's VLM output)
         t0 = time.monotonic()
         try:
-            st1 = ocr.stocks(frame.img, "p1")
-            st2 = ocr.stocks(frame.img, "p2")
+            st1 = ocr.stocks(cur_img, "p1")
+            st2 = ocr.stocks(cur_img, "p2")
         except Exception as e:
             error_count += 1
             dlog(f"[main] tier0 stocks error: {e}")
@@ -196,7 +244,7 @@ async def run() -> None:
         # Tier 1
         t0 = time.monotonic()
         try:
-            bb = detect_bboxes(frame.img)
+            bb = detect_bboxes(cur_img)
         except Exception as e:
             error_count += 1
             dlog(f"[main] tier1 detect error: {e}")
@@ -206,20 +254,6 @@ async def run() -> None:
             "p2": _position_from_bbox(bb["p2"], 1400.0),
         }
         timing["tier1"] += time.monotonic() - t0
-
-        # System 1 (rate-limited inside dispatcher)
-        t0 = time.monotonic()
-        out = await s1.maybe_infer(frame.img, t)
-        timing["s1_wait"] += time.monotonic() - t0
-        if out is not None:
-            # Smooth the raw labels through a 3-frame majority vote so the
-            # HUD doesn't flicker between equally-plausible actions.
-            out.p1["action_label"] = smoother.update("p1", out.p1["action_label"])
-            out.p2["action_label"] = smoother.update("p2", out.p2["action_label"])
-            last_s1 = out
-            last_s1_t = time.monotonic()
-            onset.update("p1", out.p1["action_label"], t)
-            onset.update("p2", out.p2["action_label"], t)
 
         actions, intent = _build_actions_intent(last_s1, onset, t)
         # Damage comes from S1 now. Until the first S1 response lands, default
@@ -277,11 +311,11 @@ async def run() -> None:
         # HUD compose
         t0 = time.monotonic()
         try:
-            composed = hud.draw(frame.img, s, t, CHAR_MAP)
+            composed = hud.draw(cur_img, s, t, CHAR_MAP)
         except Exception as e:
             error_count += 1
             dlog(f"[main] hud draw error: {e}")
-            composed = frame.img
+            composed = cur_img
         timing["hud"] += time.monotonic() - t0
 
         t0 = time.monotonic()
@@ -302,7 +336,7 @@ async def run() -> None:
             try:
                 dash_img = dashboard.render(
                     live_hud=composed,
-                    raw_capture=frame.img,
+                    raw_capture=cur_img,
                     state=s,
                     last_s1_out=last_s1,
                     last_s1_t=last_s1_t,
@@ -346,11 +380,10 @@ async def run() -> None:
                 except cv2.error:
                     pass
 
-        # Pace playback + yield to the event loop so the in-flight S1 request
-        # and any pending S2 task make progress. For a video-file source this
-        # throttles to the clip's native FPS; for a live device (frame_interval
-        # == 0) it's just a cooperative yield.
-        sleep_left = cap.frame_interval - (time.monotonic() - t)
+        # Pace to the read cadence (native FPS) + yield so the in-flight S1
+        # request and any pending S2 task make progress. Keyed off read_t (when
+        # this iteration's frame was read), not the delayed display time.
+        sleep_left = cap.frame_interval - (time.monotonic() - read_t)
         await asyncio.sleep(sleep_left if sleep_left > 0 else 0)
 
     cap.close()

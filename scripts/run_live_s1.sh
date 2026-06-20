@@ -64,6 +64,9 @@ fi
 # --- launch the live HUD ----------------------------------------------------
 export CAP_DEV
 export CAP_SKIP_SECS
+# Look-ahead sync: delay display by ~the S1 round-trip so labels line up with
+# the action. Set to 0 for live (un-synced) playback.
+export DISPLAY_DELAY="${DISPLAY_DELAY:-2.0}"
 export S1_URL="http://localhost:${S1_PORT}/infer"
 export S2_URL="http://localhost:${S2_PORT}/counterfactual"
 export S1_HZ="${S1_HZ:-7.0}"
