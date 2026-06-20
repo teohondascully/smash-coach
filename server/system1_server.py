@@ -84,6 +84,10 @@ def load_model() -> None:
         # Prefix caching: the system prompt is constant across every call so
         # the cached prefix dominates the per-call cost.
         enable_prefix_caching=True,
+        # S1_EAGER=1 disables torch.compile/CUDA graphs. Needed for the 72B-AWQ,
+        # which hits a Triton illegal-memory-access during inductor compilation
+        # on this vllm/driver combo. Slower, but sync hides the latency.
+        enforce_eager=os.getenv("S1_EAGER", "0") == "1",
     )
     logger.info("System 1 ready.")
 

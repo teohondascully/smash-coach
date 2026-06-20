@@ -34,6 +34,7 @@ from mac.dashboard import Dashboard
 from mac.dispatcher import S1Out, System1Client
 from mac.frame_data import FrameData
 from mac.hud import HUD
+from mac.label_track import LabelTrack
 from mac.onset import OnsetTracker
 from mac.rewind_card import render_card
 from mac.smoother import LabelSmoother
@@ -121,6 +122,12 @@ async def run() -> None:
     # Look-ahead sync: delay the displayed video by ~the S1 round-trip so each
     # shown frame is paired with the label computed from it. 0 = live (no delay).
     display_delay = float(os.getenv("DISPLAY_DELAY", "0"))
+    # Precomputed label track (LABEL_TRACK=path): play back a recorded clip with
+    # states looked up per displayed frame — no live inference, perfect sync.
+    track_path = os.getenv("LABEL_TRACK", "")
+    track = LabelTrack.load(track_path) if track_path else None
+    if track is not None:
+        display_delay = 0.0  # track lookup is instant + exact, no delay needed
     s1_url = os.getenv("S1_URL", "http://localhost:8001/infer")
     s2_url = os.getenv("S2_URL", "http://localhost:8002/counterfactual")
     s1_hz = float(os.getenv("S1_HZ", "7.0"))
@@ -201,18 +208,20 @@ async def run() -> None:
     for frame in cap.frames():
         read_t = frame.t
 
-        # --- Producer: fire S1 on the freshly-read (look-ahead) frame ---------
-        t0 = time.monotonic()
-        out = await s1.maybe_infer(frame.img, read_t)
-        timing["s1_wait"] += time.monotonic() - t0
-        if out is not None:
-            out.p1["action_label"] = smoother.update("p1", out.p1["action_label"])
-            out.p2["action_label"] = smoother.update("p2", out.p2["action_label"])
-            s1_results.append(out)
-            onset.update("p1", out.p1["action_label"], out.t)
-            onset.update("p2", out.p2["action_label"], out.t)
+        # --- Producer: fire live S1 on the look-ahead frame (skip if using a
+        # precomputed track). -------------------------------------------------
+        if track is None:
+            t0 = time.monotonic()
+            out = await s1.maybe_infer(frame.img, read_t)
+            timing["s1_wait"] += time.monotonic() - t0
+            if out is not None:
+                out.p1["action_label"] = smoother.update("p1", out.p1["action_label"])
+                out.p2["action_label"] = smoother.update("p2", out.p2["action_label"])
+                s1_results.append(out)
+                onset.update("p1", out.p1["action_label"], out.t)
+                onset.update("p2", out.p2["action_label"], out.t)
 
-        disp_q.append((read_t, frame.img))
+        disp_q.append((read_t, frame.video_t, frame.img))
 
         # --- Consumer gate: hold display back by display_delay so the S1 result
         # computed FROM the displayed frame has had time to return. ------------
@@ -220,13 +229,19 @@ async def run() -> None:
             sleep_left = cap.frame_interval - (time.monotonic() - read_t)
             await asyncio.sleep(sleep_left if sleep_left > 0 else 0)
             continue
-        t, cur_img = disp_q.popleft()
+        t, video_t, cur_img = disp_q.popleft()
 
-        # Pair the displayed frame with the label computed from it.
-        matched = _result_at(s1_results, t)
+        # Pair the displayed frame with its label: exact track lookup by video
+        # time, or the live result computed from it.
+        if track is not None:
+            matched = track.at(video_t)
+        else:
+            matched = _result_at(s1_results, t)
         if matched is not None:
             last_s1 = matched
             last_s1_t = time.monotonic()
+            onset.update("p1", matched.p1["action_label"], t)
+            onset.update("p2", matched.p2["action_label"], t)
 
         raw_frames.append((t, cur_img.copy()))
 

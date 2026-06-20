@@ -19,6 +19,7 @@ import cv2
 class Frame:
     img: Any  # np.ndarray BGR
     t: float  # monotonic timestamp (seconds)
+    video_t: float = 0.0  # position within the clip (seconds); 0 for live devices
 
 
 def _is_file_source(source: Any) -> bool:
@@ -95,21 +96,25 @@ class Capture:
             if not ok:
                 # transient read failure — keep trying
                 continue
-            yield Frame(img=img, t=time.monotonic())
+            now = time.monotonic()
+            yield Frame(img=img, t=now, video_t=now)
 
     def _file_frames(self) -> Iterator[Frame]:
         # Yield frames as fast as requested; the async caller paces playback to
         # ``frame_interval`` with asyncio.sleep (which also lets background
-        # inference tasks run). Loops back to the start on EOF.
+        # inference tasks run). Loops back to the start on EOF. Each frame is
+        # tagged with its position in the clip (video_t) for label-track lookup.
         while True:
+            idx = self.cap.get(cv2.CAP_PROP_POS_FRAMES)
             ok, img = self.cap.read()
             if not ok:
                 # EOF → loop back to the start frame (past any skipped intro).
                 self.cap.set(cv2.CAP_PROP_POS_FRAMES, self._start_frame)
+                idx = self._start_frame
                 ok, img = self.cap.read()
                 if not ok:
                     return  # genuinely unreadable; stop cleanly
-            yield Frame(img=img, t=time.monotonic())
+            yield Frame(img=img, t=time.monotonic(), video_t=idx / self.src_fps)
 
     def close(self) -> None:
         try:
