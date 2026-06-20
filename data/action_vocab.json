@@ -1,0 +1,22 @@
+{
+  "_comment": "Canonical action labels shared by Thread A (S1 prompt) and Thread B (frame data). Threads MUST normalize to these.",
+  "phases": ["startup", "active", "endlag", "neutral", "unknown"],
+  "intents": ["pressuring", "ledge-trapping", "neutral", "recovering", "punishing", "unknown"],
+  "joker": [
+    "neutral", "walk", "dash", "shield", "roll", "spotdodge", "airdodge",
+    "jab", "ftilt", "utilt", "dtilt", "dashattack",
+    "fsmash", "usmash", "dsmash",
+    "nair", "fair", "bair", "uair", "dair",
+    "grab", "fthrow", "bthrow", "uthrow", "dthrow",
+    "eiha", "eigaon", "tetrakarn", "makarakarn",
+    "gun", "gun_special", "arsene_summon", "wings_of_rebellion"
+  ],
+  "toon_link": [
+    "neutral", "walk", "dash", "shield", "roll", "spotdodge", "airdodge",
+    "jab", "ftilt", "utilt", "dtilt", "dashattack",
+    "fsmash", "usmash", "dsmash",
+    "nair", "fair", "bair", "uair", "dair",
+    "grab", "fthrow", "bthrow", "uthrow", "dthrow",
+    "boomerang", "bomb_pull", "bomb_throw", "arrow", "spin_attack", "hookshot"
+  ]
+}
