@@ -6,6 +6,8 @@ set -euo pipefail
 
 POD_ID="${POD_ID:-72408b}"          # A100x2 on-demand, US, $3.30/hr
 POD_NAME="${POD_NAME:-smashpod}"
+POD_DISK="${POD_DISK:-1920}"
+POD_IMAGE="${POD_IMAGE:-ubuntu_22_cuda_12}"
 
 cd "$(dirname "$0")/.."
 
@@ -28,6 +30,8 @@ sleep 5
 prime pods create \
     --id "$POD_ID" \
     --name "$POD_NAME" \
+    --disk-size "$POD_DISK" \
+    --image "$POD_IMAGE" \
     --yes \
     --plain
 
