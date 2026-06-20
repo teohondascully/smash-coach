@@ -28,6 +28,12 @@ class Capture:
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
         self.cap.set(cv2.CAP_PROP_FPS, 60)
+        # Force MJPG over raw YUV — needs ~10x less USB bandwidth, prevents
+        # silent fps downgrade on hubs / shared USB controllers.
+        self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+        # Smallest possible buffer so .read() always returns the most recent
+        # frame rather than a queued stale one when processing falls behind.
+        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         if not self.cap.isOpened():
             raise RuntimeError(
                 f"Capture device {device_index} not opened "

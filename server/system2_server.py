@@ -10,6 +10,7 @@ import base64
 import io
 import json
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
@@ -65,10 +66,12 @@ def load_model() -> None:
 
     _sgl = sgl
 
-    logger.info("Loading Qwen2.5-VL-72B-Instruct-AWQ on TP=4...")
+    model_id = os.getenv("S2_MODEL", "Qwen/Qwen2.5-VL-72B-Instruct-AWQ")
+    tp = int(os.getenv("S2_TP", "1"))
+    logger.info("Loading %s on TP=%d...", model_id, tp)
     _runtime = sgl.Runtime(
-        model_path="Qwen/Qwen2.5-VL-72B-Instruct-AWQ",
-        tp_size=4,
+        model_path=model_id,
+        tp_size=tp,
         mem_fraction_static=0.85,
     )
     sgl.set_default_backend(_runtime)

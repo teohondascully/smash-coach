@@ -22,7 +22,7 @@ def test_system1_schema_is_valid_jsonschema():
     jsonschema.Draft7Validator.check_schema(schema)
 
 
-def test_system1_schema_accepts_valid_sample():
+def test_system1_schema_accepts_valid_sample_toonlink_vs_joker():
     from server.prompts.system1 import (
         JOKER_ACTIONS,
         TOONLINK_ACTIONS,
@@ -31,19 +31,52 @@ def test_system1_schema_accepts_valid_sample():
 
     sample = {
         "p1": {
-            "action_label": JOKER_ACTIONS[0],
+            "damage_pct": 0,
+            "action_label": TOONLINK_ACTIONS[0],
             "phase": "neutral",
             "confidence": 0.5,
             "intent": "neutral",
         },
         "p2": {
-            "action_label": TOONLINK_ACTIONS[0],
+            "damage_pct": 47,
+            "action_label": JOKER_ACTIONS[0],
             "phase": "startup",
             "confidence": 0.9,
             "intent": "pressuring",
         },
     }
-    jsonschema.validate(instance=sample, schema=build_json_schema())
+    jsonschema.validate(
+        instance=sample, schema=build_json_schema("toon_link", "joker")
+    )
+
+
+def test_system1_schema_accepts_valid_sample_toonlink_vs_ike():
+    from server.prompts.system1 import (
+        IKE_ACTIONS,
+        TOONLINK_ACTIONS,
+        build_json_schema,
+    )
+
+    sample = {
+        "p1": {
+            "damage_pct": 0,
+            "action_label": TOONLINK_ACTIONS[0],
+            "phase": "neutral",
+            "confidence": 0.5,
+            "intent": "neutral",
+        },
+        "p2": {
+            "damage_pct": 33,
+            "action_label": "aether",
+            "phase": "startup",
+            "confidence": 0.9,
+            "intent": "recovering",
+        },
+    }
+    assert "aether" in IKE_ACTIONS
+    jsonschema.validate(
+        instance=sample, schema=build_json_schema("toon_link", "ike")
+    )
 
 
 def test_system1_schema_rejects_invalid_action_label():
@@ -51,20 +84,31 @@ def test_system1_schema_rejects_invalid_action_label():
 
     bad = {
         "p1": {
-            "action_label": "definitely_not_a_real_joker_move",
+            "action_label": "definitely_not_a_real_toon_link_move",
             "phase": "neutral",
             "confidence": 0.5,
             "intent": "neutral",
         },
         "p2": {
-            "action_label": "boomerang",
+            "action_label": "aether",
             "phase": "active",
             "confidence": 0.8,
             "intent": "pressuring",
         },
     }
     with pytest.raises(jsonschema.ValidationError):
-        jsonschema.validate(instance=bad, schema=build_json_schema())
+        jsonschema.validate(
+            instance=bad, schema=build_json_schema("toon_link", "ike")
+        )
+
+
+def test_ike_actions_nonempty_and_has_expected_moves():
+    from server.prompts.system1 import IKE_ACTIONS, MATCHUP_ACTIONS
+
+    assert len(IKE_ACTIONS) > 0
+    for move in ("aether", "fsmash", "eruption", "quick_draw", "counter"):
+        assert move in IKE_ACTIONS, f"missing {move}"
+    assert MATCHUP_ACTIONS["ike"] is IKE_ACTIONS
 
 
 def test_system1_system_prompt_mentions_json():

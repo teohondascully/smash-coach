@@ -35,8 +35,10 @@ SYSTEM_PROMPT = build_system_prompt(P1_CHAR, P2_CHAR)
 
 
 class FrameIn(BaseModel):
-    image_b64: str  # base64-encoded JPEG (or PNG) bytes
-    t: float
+    # Multi-frame stack input. The dispatcher sends the most recent 3 frames
+    # at ~100ms intervals so the model has temporal context for phase reads.
+    images_b64: list[str]
+    ts: list[float]
 
 
 @app.on_event("startup")
@@ -51,13 +53,19 @@ def load_model() -> None:
     _SamplingParams = SamplingParams
     _GuidedDecodingParams = GuidedDecodingParams
 
-    logger.info("Loading Qwen2.5-VL-7B-Instruct on TP=2...")
+    model_id = os.getenv("S1_MODEL", "Qwen/Qwen2.5-VL-7B-Instruct")
+    tp = int(os.getenv("S1_TP", "1"))
+    stack_size = int(os.getenv("S1_STACK_SIZE", "3"))
+    logger.info("Loading %s on TP=%d, stack=%d...", model_id, tp, stack_size)
     _llm = LLM(
-        model="Qwen/Qwen2.5-VL-7B-Instruct",
-        tensor_parallel_size=2,
+        model=model_id,
+        tensor_parallel_size=tp,
         gpu_memory_utilization=0.85,
-        max_model_len=4096,
-        limit_mm_per_prompt={"image": 1},
+        max_model_len=8192,
+        limit_mm_per_prompt={"image": stack_size},
+        # Prefix caching: the system prompt is constant across every call so
+        # the cached prefix dominates the per-call cost.
+        enable_prefix_caching=True,
     )
     logger.info("System 1 ready.")
 
@@ -72,9 +80,13 @@ def infer(req: FrameIn) -> dict:
     if _llm is None:
         raise HTTPException(status_code=503, detail="model not loaded")
 
+    if not req.images_b64:
+        raise HTTPException(status_code=400, detail="images_b64 empty")
     try:
-        img_bytes = base64.b64decode(req.image_b64)
-        img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
+        images = [
+            Image.open(io.BytesIO(base64.b64decode(b))).convert("RGB")
+            for b in req.images_b64
+        ]
     except Exception as e:  # noqa: BLE001
         raise HTTPException(status_code=400, detail=f"bad image: {e}") from e
 
@@ -83,15 +95,21 @@ def infer(req: FrameIn) -> dict:
         max_tokens=256,
         guided_decoding=_GuidedDecodingParams(json=SCHEMA),
     )
+    # User content: all frames (oldest first), then the analyze instruction.
+    user_content: list[dict] = [
+        {"type": "image", "image": im} for im in images
+    ]
+    t_span = (
+        f"t={req.ts[-1]:.3f}s (latest of {len(images)} frames"
+        f", oldest @ t={req.ts[0]:.3f}s)"
+    )
+    user_content.append(
+        {"type": "text", "text": f"Analyze the LATEST frame; the older ones "
+                                 f"are temporal context. {t_span}."}
+    )
     chat = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {
-            "role": "user",
-            "content": [
-                {"type": "image", "image": img},
-                {"type": "text", "text": f"Analyze this frame at t={req.t:.3f}s."},
-            ],
-        },
+        {"role": "user", "content": user_content},
     ]
     out = _llm.chat(chat, sampling_params=sampling)
     text = out[0].outputs[0].text

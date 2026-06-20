@@ -157,10 +157,8 @@ async def run() -> None:
         t = frame.t
         raw_frames.append((t, frame.img.copy()))
 
-        # Tier 0
+        # Tier 0 (stocks only — damage now comes from System 1's VLM output)
         t0 = time.monotonic()
-        d1 = ocr.damage(frame.img, "p1") or 0.0
-        d2 = ocr.damage(frame.img, "p2") or 0.0
         try:
             st1 = ocr.stocks(frame.img, "p1")
             st2 = ocr.stocks(frame.img, "p2")
@@ -195,6 +193,10 @@ async def run() -> None:
             onset.update("p2", out.p2["action_label"], t)
 
         actions, intent = _build_actions_intent(last_s1, onset, t)
+        # Damage comes from S1 now. Until the first S1 response lands, default
+        # to 0 — graceful, the HUD just shows 0% momentarily.
+        d1 = float(last_s1.p1.get("damage_pct", 0)) if last_s1 else 0.0
+        d2 = float(last_s1.p2.get("damage_pct", 0)) if last_s1 else 0.0
         s = StateT(
             t=t,
             damage={"p1": d1, "p2": d2},
