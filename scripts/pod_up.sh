@@ -40,5 +40,11 @@ echo "=== Current pods ==="
 prime pods list --plain
 
 echo
-echo "Start the cost clock once the pod is running:"
-echo "  ./scripts/cost_start.sh"
+echo "=== Starting cost clock ==="
+uv run python -c "
+from mac.ops import CostTracker
+import json
+cfg = json.load(open('data/ops_config.json'))
+CostTracker('data/ops_state.json', cfg['rate_per_hour_usd'], cfg['budget_usd']).mark_started()
+print(f'  Cost clock started at \${cfg[\"rate_per_hour_usd\"]}/hr')
+"
