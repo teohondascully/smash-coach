@@ -1,0 +1,37 @@
+{
+  "joker": {
+    "fsmash": [
+      {"dx": 35, "dy": 0, "radius": 18, "active_frames": [16, 19]}
+    ],
+    "usmash": [
+      {"dx": 0, "dy": -30, "radius": 22, "active_frames": [14, 17]}
+    ],
+    "dsmash": [
+      {"dx": 28, "dy": 10, "radius": 16, "active_frames": [8, 10]},
+      {"dx": -28, "dy": 10, "radius": 16, "active_frames": [13, 15]}
+    ],
+    "fair": [
+      {"dx": 30, "dy": -10, "radius": 14, "active_frames": [8, 11]}
+    ],
+    "nair": [
+      {"dx": 0, "dy": 0, "radius": 20, "active_frames": [5, 9]}
+    ]
+  },
+  "toon_link": {
+    "fsmash": [
+      {"dx": 30, "dy": 0, "radius": 16, "active_frames": [15, 17]}
+    ],
+    "usmash": [
+      {"dx": 0, "dy": -28, "radius": 20, "active_frames": [13, 16]}
+    ],
+    "dsmash": [
+      {"dx": 24, "dy": 12, "radius": 14, "active_frames": [9, 11]}
+    ],
+    "fair": [
+      {"dx": 26, "dy": -8, "radius": 14, "active_frames": [14, 16]}
+    ],
+    "nair": [
+      {"dx": 0, "dy": 0, "radius": 18, "active_frames": [7, 11]}
+    ]
+  }
+}
