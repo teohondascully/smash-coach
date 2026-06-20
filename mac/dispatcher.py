@@ -70,6 +70,9 @@ class System1Client:
         self._client = httpx.AsyncClient(timeout=timeout)
         # (t, frame) pairs spaced at ~stack_interval_s.
         self._buf: deque[tuple[float, np.ndarray]] = deque(maxlen=stack_size)
+        # Adaptive sampling: when both players are in "neutral", double the
+        # interval each call up to 8x. Resets on the first non-neutral label.
+        self._neutral_streak: int = 0
 
     def _maybe_buffer(self, img: np.ndarray, t: float) -> None:
         if not self._buf or (t - self._buf[-1][0]) >= self.stack_interval_s:
@@ -79,7 +82,8 @@ class System1Client:
         self._maybe_buffer(img, t)
 
         now = time.monotonic()
-        if now - self._last_sent < self.min_interval:
+        effective_interval = self.min_interval * (2 ** min(self._neutral_streak, 3))
+        if now - self._last_sent < effective_interval:
             return None
         if len(self._buf) < self.stack_size:
             return None
@@ -101,6 +105,11 @@ class System1Client:
             )
             r.raise_for_status()
             d = r.json()
+            # Update the neutral streak so the next call's interval adapts.
+            if d["p1"].get("action_label") == "neutral" and d["p2"].get("action_label") == "neutral":
+                self._neutral_streak += 1
+            else:
+                self._neutral_streak = 0
             return S1Out(p1=d["p1"], p2=d["p2"], t=t)
         except (httpx.HTTPError, KeyError, ValueError):
             return None

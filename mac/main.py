@@ -34,6 +34,7 @@ from mac.frame_data import FrameData
 from mac.hud import HUD
 from mac.onset import OnsetTracker
 from mac.rewind_card import render_card
+from mac.smoother import LabelSmoother
 from mac.state import ActionState, PlayerState, StateBuffer, StateT
 from mac.system2_client import System2Client, select_keyframes
 from mac.tier0_ocr import Tier0
@@ -130,6 +131,7 @@ async def run() -> None:
         cooldown_s=trigger_cooldown,
     )
     rewind = RewindCardWindow(duration_s=rewind_secs)
+    smoother = LabelSmoother(k=3)
 
     raw_frames: deque[tuple[float, np.ndarray]] = deque(maxlen=600)
     last_s1: S1Out | None = None
@@ -187,6 +189,10 @@ async def run() -> None:
         out = await s1.maybe_infer(frame.img, t)
         timing["s1_wait"] += time.monotonic() - t0
         if out is not None:
+            # Smooth the raw labels through a 3-frame majority vote so the
+            # HUD doesn't flicker between equally-plausible actions.
+            out.p1["action_label"] = smoother.update("p1", out.p1["action_label"])
+            out.p2["action_label"] = smoother.update("p2", out.p2["action_label"])
             last_s1 = out
             last_s1_t = time.monotonic()
             onset.update("p1", out.p1["action_label"], t)
