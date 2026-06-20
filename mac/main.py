@@ -104,6 +104,7 @@ async def run() -> None:
     trigger_delta = float(os.getenv("TRIGGER_DELTA", "30.0"))
     trigger_cooldown = float(os.getenv("TRIGGER_COOLDOWN", "5.0"))
     debug_on = os.getenv("DEBUG", "").lower() in ("1", "true", "yes", "on")
+    record_path = os.getenv("RECORD_PATH", "")  # if set, save HUD output to MP4
     dashboard = Dashboard()
 
     def dlog(msg: str) -> None:
@@ -132,6 +133,9 @@ async def run() -> None:
     )
     rewind = RewindCardWindow(duration_s=rewind_secs)
     smoother = LabelSmoother(k=3)
+    # Optional MP4 recording of the HUD output — bulletproof demo backup.
+    # Initialized lazily on the first frame so the codec sees a real size.
+    recorder: cv2.VideoWriter | None = None
 
     raw_frames: deque[tuple[float, np.ndarray]] = deque(maxlen=600)
     last_s1: S1Out | None = None
@@ -263,6 +267,15 @@ async def run() -> None:
 
         t0 = time.monotonic()
         cv2.imshow("smash-coach", composed)
+        # MP4 backup recording — initialize on first frame, write each
+        # composed HUD frame for a bulletproof demo fallback.
+        if record_path:
+            if recorder is None:
+                h, w = composed.shape[:2]
+                fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+                recorder = cv2.VideoWriter(record_path, fourcc, 30.0, (w, h))
+                dlog(f"[main] recording HUD to {record_path}")
+            recorder.write(composed)
         timing["draw"] += time.monotonic() - t0
 
         # Dashboard render (after hud) ---------------------------------
@@ -315,6 +328,9 @@ async def run() -> None:
                     pass
 
     cap.close()
+    if recorder is not None:
+        recorder.release()
+        print(f"[main] saved recording: {record_path}")
     cv2.destroyAllWindows()
 
 
